@@ -1,0 +1,12 @@
+{
+    "name": "turierik/szerver-cs14",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Turierik\\SzerverCs14\\": "src/"
+        }
+    },
+    "require": {
+        "alrik11es/cowsayphp": "^1.2"
+    }
+}

@@ -1,0 +1,9 @@
+JAVASOLT HÁZI FELADATOK
+
+progenv.inf.elte.hu
+
+1. hét - Hőmérséklet
+1. hét - Hallgatók (szigorú pontozás)
+2. hét - Szöveges mezők másolása
+2. hét - Kép megjelenítése
+2. hét - Hiperhivatkozások címének listázása
