@@ -1,0 +1,31 @@
+JAVASCRIPT KVÍZ INFÓK
+
+Mikor?
+Szeptember 28, 16:05-16:25 (érkezés: 16:00-ra)
+Késés esetén NEM tudok extra időt adni, mert csoportszinten lesz beállítva a közös Canvason!
+
+Milyen lesz?
+20 kérdés - többnyire feleletválasztós, néhány rövid szám vagy egyértelmű szöveg - automatikusan értékelt
+NINCS segédeszköz - laborgépen írandó, internet nélkül, dokumentáció nélkül
+Némi elmélet, némi kódértelmezés - pl. hol van a hiba, mit ír ki a kód?
+
+Követelmények?
+Max. 20 pont (1 pont/kérdés) - beleszámít az év végi jegybe, lásd Canvas követelmények
+Legalább 8.00 pont kell az elégséges jegyhez!
+NINCS kézi felülbírálás (pl. "rosszra kattintottam"), a min. 8 pont az min. 8 pontot jelent!
+Hiányzás vagy < 8.00 pont? Vizsgaidőszak elején össznépi pótalkalom!
+
+10 témakör, mindegyikből 2 kérdés:
+ 1.) nyelvi elemek
+ 2.) tömbfüggvények - melyiket használnád, mit csinál?
+ 3.) tömbfüggvények - kódértelmezés
+ 4.) tömbfüggvények - objektumtömbre
+ 5.) qS / qSA
+ 6.) DOM - innerText, value, style, stb.
+ 7.) eseménykezelés elmélete
+ 8.) DOM és eseménykezelés példákon
+ 9.) delegálás elmélete
+10.) delegálás gyakorlata
+
+
+

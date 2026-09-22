@@ -1,0 +1,29 @@
+JAVASCRIPT QUIZ INFO
+
+When?
+September 28, from 10:20 to 10:40 (arrive by 10:15)
+No extra time if you are late, time is set for the entire group on Canvas
+
+What is it like?
+20 questions - mostly multiple choice, some short answers, graded automatically
+NO help allowed - must be written on lab PC, internet disabled, no documentation
+Some theory - some code analysis - i.e. where is the mistake, what is the output?
+
+Requirements?
+Max. 20 points (1 pt / question) - affects final grade, see Canvas for requirements.
+You need at least 8.00 points to pass the course!
+NO manual score changes (i.e. "I missclicked/mistyped"), min. 8 points means min. 8 points!
+Not here or < 8.00 points? Retake at the beginning of exam period!
+
+10 topics, 2 questions each:
+ 1.) language elements
+ 2.) array functions - what does X do?
+ 3.) array functions - code analysis
+ 4.) array functions - array of objects
+ 5.) qS / qSA
+ 6.) DOM - innerText, value, style, etc.
+ 7.) event handling in theory
+ 8.) DOM and event handling in code analysis
+ 9.) delegation - theory
+10.) delegation - code analysis
+
