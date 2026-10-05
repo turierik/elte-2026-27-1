@@ -1,0 +1,73 @@
+<h2 id="data">Data</h2>
+<p>❗ In this exam, all tasks will work with the same data so you don’t have to understand different schemas repeatedly. You can find the data in various formats in the <code>data</code> folder. You can use any of them for any task, feel free to copy the preferred file into your task folder or copy its contents directly into your code. You may add any helper attributes to the data if needed.</p>
+<p>Each item represents data about concert videos (live performance recordings):</p>
+<ul>
+<li><code>id</code>: A unique identifier consisting only of lowercase English letters and digits.</li>
+<li><code>yt</code>: YouTube ID pointing to the live performance. May contain uppercase/lowercase letters, digits, dashes, underscores (and may start with any of those).</li>
+<li><code>title</code>: The video title in the format <code>Artist Name - Song Title</code>. Contains exactly one dash (<code>-</code>) separating the artist and the song title.</li>
+<li><code>year</code>: The year of the performance (i.e. when the song was featured in Eurovision).</li>
+<li><code>views</code>: The number of views (in millions) on the official Eurovision YouTube channel. Not necessarily a whole number.</li>
+<li><code>nation</code>: Only relevant in the final PHP task. Indicates the country the artist represented with this song.</li>
+</ul>
+<h2 id="lore">Lore</h2>
+<p>After Eurovision contests, performances can be rewatched online. Since there aren’t enough video/music sharing platforms, we’re making our own.</p>
+<h2 id="tasks">Tasks</h2>
+<h3 id="1-video-data-js-1-videodata-10-points-">1. Video data (js-1-videodata, 10 points)</h3>
+<p>First, we want to know some information about our favorite Eurovision songs. <strong>Do not hardcode the answers</strong>, solve them programmatically since more songs might catch our interest later!</p>
+<ul>
+<li>a. (1 point) Into <code>taskA</code> element: Write the title of a video from before the year 2000!<ul>
+<li>You can assume such a video exists.</li>
+</ul>
+</li>
+<li>b. (2 points) Into <code>taskB</code> element: List all videos that have more than 100 million views!</li>
+<li>c. (2 points) Into <code>taskC</code> element: Write how many video titles contain the word <code>Love</code> (with capital <code>L</code> and lowercase <code>ove</code>)!</li>
+<li>d. (3 points) Into <code>taskD</code> element: Write the <strong>average</strong> number of views of videos from 2024! Round the result to two decimal places!<ul>
+<li>You can assume there is at least one such video.</li>
+<li>Partial points for the unrounded value.</li>
+</ul>
+</li>
+<li>e. (2 points) Into <code>taskE</code> element: Write whether there is any song title (not full video title!) that contains a digit!<ul>
+<li>The check should be for the part <strong>after the dash</strong> in the title.</li>
+<li>The result can be <code>Yes / No</code>, <code>true / false</code>, <code>0 / 1</code> or something similarly logical.</li>
+<li>Don’t get stuck here — move on if you’re stuck.</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-videos-js-2-videolist-15-points-">2. Videos (js-2-videolist, 15 points)</h3>
+<p>Since we don’t yet know how to fetch current YouTube view counts, we’ll have to update them manually.</p>
+<ul>
+<li>a. (2 points) List the videos into the <code>#video-table</code> following the pattern (year, title, views in millions)!</li>
+<li>b. (2 points) Allow selecting table rows (<code>tr</code>).<ul>
+<li>When a row is clicked, apply the <code>selected</code> class to it!</li>
+<li>If already selected, remove the class on click!</li>
+</ul>
+</li>
+<li>c. (1 point) Display the total number of views of all videos in the <code>#sum</code> element.</li>
+<li>d. (2 points) If any video is selected, <code>#sum</code> should only show the sum of selected videos’ views.<ul>
+<li>If none are selected, show the overall sum!</li>
+</ul>
+</li>
+<li>e. (4 points) Buttons in the <code>#controls</code> section should work accordingly: <code>#btn-add</code> should increase the views of all selected rows by the value in <code>#amount</code>; <code>#btn-sub</code> should decrease it, but never below zero.<ul>
+<li>Partial: update the first two rows instead of selection.</li>
+<li>Partial: use a fixed increment/decrement of 1 instead of input field.</li>
+<li>If nothing is selected, do nothing!</li>
+<li>Keep <code>#sum</code> up to date!</li>
+</ul>
+</li>
+<li>f. (4 points) Clicking header cells should sort the table in descending order based on the clicked column!<ul>
+<li>You don’t need to preserve selection after sorting.</li>
+<li>Partial: sort by views descending at load without interactivity.</li>
+<li>Sorting alphabetically thos way will result in a W to A order. That is fine, don’t complicate this further.</li>
+<li>No need to implement toggling sort direction on repeated clicks.</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-lights-js-3-lights-8-points-">3. Lights (js-3-lights, 8 points)</h3>
+<p>We haven’t celebrated Christmas with JavaScript yet, and while the Christmas season is over, let’s remember a little bit that this holiday is not about fallible human love, but about perfect divine love that bends down to us and uplifts our whole humanity. So let&#39;s decorate the pine tree above the Nativity Scene with lights and turn on the play of light!</p>
+<ul>
+<li>a. (2 points) Given a list element (ul) with the ID bethlehem with the pine tree as the background image. By clicking on this element, add a new list item (li) to the list, setting the top and left properties according to the position of the mouse. Technical help: use the offsetX and offsetY properties of the event object to get the position relative to the containing element!</li>
+<li>b. (2 points) Click on the colored circles (radio group) below the image to select the color of the light to be added. Set the background color of the added list item to the value of the radio group named color.</li>
+<li>c. (2 points) When adding a list item, select the next radio item in the color radio group. That is, if it was red, green should be checked, blue after the green, yellow after the blue, red again after the yellow, and so on.</li>
+<li>d. (1 point) Click on the change-colors button to shift cyclically the background color of the list items. For example, a row of red-blue-green light will become a green-red-blue.</li>
+<li>e. (1 point) Click the change-colors button to change the color automatically every second. Use a timer to solve it!</li>
+</ul>

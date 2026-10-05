@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+h1 {
+    font-size: 1.8rem;
+    color: #444;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+dl {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+dt {
+    font-weight: bold;
+    color: #555;
+    margin-top: 10px;
+}
+
+dd {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: #f5f5f5;
+    border-left: 4px solid #ccc;
+    border-radius: 4px;
+}
+
+dd[id^="task"] {
+    font-size: 1rem;
+    color: #222;
+    background-color: #e6f7ff;
+    border-left: 4px solid #0099cc;
+}
+
+dd:hover {
+    background-color: #d9f1ff;
+    border-left-color: #006699;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 2.</title>
+    <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+    <h1>2. Video list</h1>
+    <div id="main">
+        <span id="controls">
+            <input id="amount" placeholder="1.5"> million <button id="btn-add">➕</button> <button id="btn-sub">➖</button>
+        </span>
+        <span id="info">
+            Sum views: <span id="sum">85</span> million
+        </span>
+        <table id="video-table">
+            <thead>
+                <th data-sort="year">Year</th>
+                <th data-sort="title">Video title</th>
+                <th data-sort="views">Views</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2023</td>
+                    <td>Käärijä - Cha Cha Cha</td>
+                    <td>44 million</td>
+                </tr>
+                <tr>
+                    <td>2024</td>
+                    <td>Baby Lasagna - Rim Tim Tagi Dim</td>
+                    <td>41 million</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <script src="../data/data_array.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

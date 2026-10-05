@@ -1,0 +1,5 @@
+const taskA = document.querySelector('#taskA')
+const taskB = document.querySelector('#taskB')
+const taskC = document.querySelector('#taskC')
+const taskD = document.querySelector('#taskD')
+const taskE = document.querySelector('#taskE')

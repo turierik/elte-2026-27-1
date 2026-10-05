@@ -1,0 +1,79 @@
+<h2 id="data">Adatok</h2>
+<p>❗ Ebben a ZH-ban az összes feladat ugyanazokkal az adatokkal fog dolgozni, hogy ne kelljen újra és újra megérteni a különböző sémákat. Az adatokat számos formátumban megtalálod a <code>data</code> mappában. Bármelyiket használhatod bármely feladatnál, bátran másold bele a feladat mappájába a szimpatikus filet, vagy másold ki a tartalmát és illeszd be a kódodba egy az egyben. Az adatokhoz bármilyen segédattribútumot hozzáadhatsz, ha szükséges.</p>
+<p>Az egyes elemek mind koncertvideók (élő fellépések felvételeinek) adatai:</p>
+<ul>
+<li><code>id</code>: Egyedi azonosító, ami csak angol kisbetűkből és számjegyekből áll.</li>
+<li><code>yt</code>: YouTube azonosító, ami az élő fellépésre mutat. Tartalmazhat kis- és nagy angol betűket, számjegyeket, kötőjeleket, alulvonásokat (és bármelyikkel kezdődhet).</li>
+<li><code>title</code>: A videó címe <code>Előadó Neve - Zene Címe</code> formátumban. Ez pontosan egy darab kötőjelet (<code>-</code>) tartalmaz, ami elválasztja az előadó nevét a zeneszám címétől.</li>
+<li><code>year</code>: A felvétel éve (ebben az évben szerepelt a szám az Eurovízión).</li>
+<li><code>views</code>: A videó nézettsége (millió) az Eurovízió YouTube csatornáján. Nem feltétlen egész szám.</li>
+<li><code>nation</code>: Csak az utolsó PHP feladatban lesz releváns. Megadja, melyik ország színeiben lépett fel az előadó ezzel a dallal.</li>
+</ul>
+<h2 id="lore">Lore</h2>
+<p>Az Eurovíziós dalfesztiválok után a fellépések újranézhetőek online. Mivel nincs elég videó/zenemegosztó felület, mi is belevágunk, hogy készítsünk egyet.</p>
+<h2 id="tasks">Feladatok</h2>
+<h3 id="1-vide-k-adatai-js-1-videodata-10-pont-">1. Videók adatai (js-1-videodata, 10 pont)</h3>
+<p>Először is szeretnénk tudni pár információt a kedvenc Eurovíziós dalainkról. A feladatokat <strong>ne beégetve oldd meg, hanem programozottan</strong>, hiszen később lehet, hogy új dalok is megtetszenek!</p>
+<ul>
+<li>a. (1 pont) A <code>taskA</code> azonosítójú elembe írd ki egy 2000 előtti videó címét.<ul>
+<li>Feltételezheted, hogy létezik ilyen.</li>
+</ul>
+</li>
+<li>b. (2 pont) A <code>taskB</code> azonosítójú elembe sorold fel, hogy mely videók szereztek 100 milliónál több megtekintést!</li>
+<li>c. (2 pont) A <code>taskC</code> azonosítójú elembe írd ki, hogy hány videó címében szerepel a <code>Love</code> szó!<ul>
+<li>Feltételezheted, hogy mindegyikben pontosan így szerepel (nagy <code>L</code>, kis <code>ove</code>).</li>
+</ul>
+</li>
+<li>d. (3 pont) A <code>taskD</code> azonosítójú elembe írd ki, átlagosan hány megtekintése van a 2024-es videóknak! Az eredményt kerekítsd két tizedes pontosságra!<ul>
+<li>Feltételezheted, hogy nem 0 db ilyen van.</li>
+<li>Részpontért: Kerekítés nélkül.</li>
+</ul>
+</li>
+<li>e. (2 pont) A <code>taskE</code> azonosítójú elembe írd ki, hogy van-e olyan zeneszám, aminek a címében szerepel számjegy.<ul>
+<li>Nem a videó teljes címe a kérdés, hanem a videó címében a kötőjel utáni &quot;Zene Címe&quot; rész.</li>
+<li>A válasz lehet <code>Igen / Nem</code>, <code>true / false</code>, <code>0 / 1</code> vagy hasonló, logikus és beszédes eredmény.</li>
+<li>Ne ragadj le ennél a részfeladatnál, ha nem jön az ötlet, inkább lépj tovább a következő feladatra.</li>
+</ul>
+</li>
+</ul>
+<img src="js-1-en.png">
+
+<h3 id="2-vide-k-js-2-videolist-15-pont-">2. Videók (js-2-videolist, 15 pont)</h3>
+<p>Mivel még nem tudjuk, hogyan kell lekérdezni egy YouTube videó aktuális nézettségét, kézzel kell megejtenünk az adatok frissen tartását.</p>
+<ul>
+<li>a. (2 pont) A <code>#video-table</code> táblázatba listázd a videókat a mintának megfelelően (év, cím, nézettség millió)!</li>
+<li>b. (2 pont) A videókat (táblázat sorokat <code>tr</code>) lehessen kijelölni.<ul>
+<li>Ha rákattintunk egy videóra (táblázat sorra <code>tr</code>), alkalmazd rá a <code>selected</code> stílusosztályt!</li>
+<li>Ha egy már kijelölt videóra (táblázat sorra <code>tr</code>) kattintunk, vedd le róla a <code>selected</code> stílusosztályt!</li>
+</ul>
+</li>
+<li>c. (1 pont) A <code>#sum</code> elembe írd ki a videók össz nézettségét.</li>
+<li>d. (2 pont) Ha van kijelölt videó, a <code>#sum</code> elemben csak a kijelölt videók össz nézettsége legyen (egyébként az összes videóé).</li>
+<li>e. (4 pont) A <code>#controls</code> elemben lévő gombok működjenek értelemszerűen: a <code>#btn-add</code> megnyomására az összes kijelölt elemben növeld a nézettséget az <code>#amount</code> elem értékével; a <code>#btn-sub</code> pedig csökkentse őket, de az érték negatívra nem csökkenhet, helyette nullán marad.<ul>
+<li>Részpontért (ha a kijelölés nem megy): Fixen az első két sor értékét változtasd.</li>
+<li>Részpontért (ha az input mező nem megy): Fixen 1-gyel növeld/csökkentsd az értékeket.</li>
+<li>Ha semmi nincs kijelölve, semmit ne növelj!</li>
+<li>A d. részfeladat összegét tartsd frissen!</li>
+</ul>
+</li>
+<li>f. (4 pont) A fejléc cellákra kattintva rendezd a táblázatot a kattintott oszlop szerint csökkenően!<ul>
+<li>Mindegy, hogy ilyenkor a kijelölések megmaradnak vagy eltűnnek.</li>
+<li>Részpontért: Kigeneráláskor rendezd nézettség szerint csökkenő sorrendbe. Nincs kattintás/intreraktivitás a rendezésben.</li>
+<li>Igen, valóban, ha jól csináltad, az ABC sorrendbe rendezés W-től indul és A felé megy. Nem kell bonyolítani azzal, hogy a cím növekvő, a nézettség és év csökkenő.</li>
+<li>Azzal se nehezítsd az életed, hogy újra ugyanazon oszlopra kattintásnál a másik irányba rendezed.</li>
+</ul>
+</li>
+</ul>
+<img src="js-2-en.gif">
+
+<h3 id="3-lights-js-3-lights-8-points-">3. Fények (js-3-lights, 8 pont)</h3>
+<p>JavaScripttel még nem ünnepeltük a karácsonyt, és ugyan vége a karácsonyi időszaknak, de egy kicsit emlékezzünk vissza arra, hogy ez az ünnep nem az esendő emberi szeretetről, hanem a hozzánk lehajló és minket felemelő, tökéletes isteni szeretetről szól. Díszítsük hát fel a Betlehem felett a fenyőfát fényekkel és kapcsoljuk be a fényjátékot!</p>
+<ul>
+<li>a. (2 pont) Adott egy <code>bethlehem</code> azonosítójú lista (<code>ul</code>), amelynek háttérképként van megadva a fenyőfa. Ide kattintva adjunk hozzá egy új listaelemet (<code>li</code>), beállítva a <code>top</code> és <code>left</code> tulajdonságát az egér pozíciójának megfelelően. <em>Technikai segítség: használjuk az eseményobjektum <code>offsetX</code> és <code>offsetY</code> tulajdonságát a tartalmazó elemhez képesti pozíció lekérdezésére!</em></li>
+<li>b. (2 pont) A kép alatti színes körökre kattintva választhatjuk ki a hozzáadandó fény színét. A hozzáadott listaelemnek állítsuk be a háttérszínét a <code>color</code> nevű rádiócsoport értékének megfelelően!</li>
+<li>c. (2 pont) Egy listaelem hozzáadásakor a <code>color</code> rádiócsoportban válasszuk ki a ciklikusan következő rádióelemet! Azaz ha piros volt, akkor a zöld legyen bejelölve, zöld után kék, kék után sárga, sárga után újra a piros, stb.</li>
+<li>d. (1 pont) A <code>change-colors</code> azonosítójú gombra kattintva ciklikusan toljuk el a listaelemek háttérszínét. Például egy piros-kék-zöld izzósorból egy zöld-piros-kék lesz.</li>
+<li>e. (1 pont)  A <code>change-colors</code> azonosítójú gombra kattintva történjen a színváltás automatikusan másodpercenként. Használj időzítőt a megoldáshoz!</li>
+</ul>
+
+<img src="js-3-en.gif">
