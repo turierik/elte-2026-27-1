@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
@@ -13,7 +14,7 @@ class ProductController extends Controller
     public function index()
     {
         return view('products.index', [
-            "products" => Product::all()
+            "products" => Product::paginate(9)
         ]);
     }
 
@@ -22,7 +23,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.create');
     }
 
     /**
@@ -30,7 +31,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request -> validate([
+            "name" => "required|string|min:3",
+            "price" => "required|integer|min:0"
+        ], [
+            "name.required" => "A termék nevének megadása kötelező!",
+            "name.string" => "A termék neve szöveg kell legyen!",
+            "name.min" => "A termék neve legalább :min karakter legyen!",
+            "price.required" => "A termék árának megadása kötelező!",
+            "price.integer" => "A termék ára egész szám kell legyen!",
+            "price.min" => "A termék ára legalább :min Ft kell legyen!"
+        ]);
+        // ha a validátor elbukik, visszairányit oda, ahonnan jöttél
+        // tehát innentől lefelé biztos, hogy a validátor átment :D
+        $product = Product::create($validated);
+        Session::flash("product-created", $product);
+        return redirect() -> route('products.index');
     }
 
     /**
@@ -38,7 +54,10 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('products.show', [
+            'product' => $product,
+            'orderCount' => $product -> orders() -> count()
+        ]);
     }
 
     /**

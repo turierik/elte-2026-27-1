@@ -3,6 +3,12 @@
 @section('title', "Termékek")
 
 @section('content')
+
+    @if (Session::has('product-created'))
+        <div class="w-full bg-green-200 text-center">
+            A(z) <b>{{ Session::get('product-created')["name"] }}</b> termék létrehozva!
+        </div>
+    @endif
     <div class="grid grid-cols-3 gap-2">
     @foreach ($products as $product)
         <div class="w-full border p-2">
@@ -12,4 +18,6 @@
         </div>
     @endforeach
     </div>
+
+    {{ $products -> links() }}
 @endsection

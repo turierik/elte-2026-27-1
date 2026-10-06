@@ -1,14 +1,14 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 
-Route::get('/', function () {
-    return view('posts.index', [
-        "posts" => Post::all()
-    ]);
-});
+Route::get('/', [PostController::class, 'index']) -> name('posts.index');
+Route::get('/posts/{post}', [PostController::class, 'show']) -> name('posts.show');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
