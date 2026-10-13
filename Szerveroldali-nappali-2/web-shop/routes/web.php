@@ -11,7 +11,7 @@ Route::get('/products/{product}', [ProductController::class, 'show']) -> name('p
 Route::post('/products', [ProductController::class, 'store']) -> name('products.store');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect() -> route('products.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

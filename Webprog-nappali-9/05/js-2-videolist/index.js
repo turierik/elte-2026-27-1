@@ -1,6 +1,0 @@
-const videoTable = document.querySelector('#video-table')
-const videoTableBody = document.querySelector('#video-table tbody')
-const viewInput = document.querySelector('#amount')
-const btnAdd = document.querySelector('#btn-add')
-const btnSub = document.querySelector('#btn-sub')
-const sumSpan = document.querySelector('#sum')

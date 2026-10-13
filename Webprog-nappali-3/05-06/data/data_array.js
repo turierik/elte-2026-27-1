@@ -1,6 +1,6 @@
 const data = [
     { id: "0573ddf4", yt: "WXwgZL4zx9o", title: "Alexander Rybak - Fairytale", year: 2009, views: 105, nation: "" },
-    { id: "069687d6", yt: "Pfo-8z86x80", title: "Loreen - Euphoria", year: 2012, views: 69, nation: "" },
+    { id: "069687d6", yt: "Pfo-8z86x80", title: "Loreen - Euphoria", year: 2012, views: 69, nation: ""},
     { id: "1479a2fe", yt: "onOex2WXjbA", title: "JJ - Wasted Love", year: 2025, views: 9.5, nation: "" },
     { id: "31fb4561", yt: "p6e1TmYb33w", title: "AWS - Viszlát Nyár", year: 2018, views: 2.6, nation: "" },
     { id: "3591afee", yt: "-XyLecY2JyE", title: "Slimane - Mon Amour", year: 2024, views: 26, nation: "" },

@@ -3,7 +3,7 @@
 @section('title', 'Új termék')
 
 @section('content')
-    <form action="{{ route('products.store') }}" method="POST">
+    <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         Termék neve:
@@ -16,6 +16,13 @@
         Termék ára:
         <input type="text" name="price" value="{{ old('price', '' )}}">
         @error('price')
+            <span class="text-red-500">{{ $message }}</span>
+        @enderror
+        <br>
+
+        Kép:
+        <input type="file" name="image_file"><br>
+        @error('image_file')
             <span class="text-red-500">{{ $message }}</span>
         @enderror
         <br>

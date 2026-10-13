@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -22,7 +23,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view("posts.create", [
+            'users' => User::all()
+        ]);
     }
 
     /**
@@ -30,7 +33,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request -> validate([
+            "content" => "required|min:5",
+            "title" => "required|max:64",
+            "user_id" => "required|integer|exists:users,id"
+        ], [
+            "content.required" => "A tartalom kitöltése kötelező!",
+            "content.min" => "A tartalom legalább :min karakterből álljon!"
+        ]);
+        // innentől lefelé BIZTOS, hogy a validáció átment :)
+        Post::create($validated);
+        return redirect() -> route('posts.index');
     }
 
     /**
