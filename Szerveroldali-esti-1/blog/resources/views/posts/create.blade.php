@@ -22,7 +22,7 @@
             <span class="text-red-500">{{ $message }}</span>
         @enderror<br>
 
-        Szerző:<br>
+        {{-- Szerző:<br>
         <select name="user_id">
             @foreach($users as $user)
                 <option value="{{ $user -> id}}">
@@ -34,7 +34,7 @@
         @error('user_id')
             <span class="text-red-500">{{ $message }}</span>
         @enderror
-        <br>
+        <br> --}}
 
         Kép:
         <input type="file" name="image_file"><br>

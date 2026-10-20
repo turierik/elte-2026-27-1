@@ -22,6 +22,10 @@ class DatabaseSeeder extends Seeder
         $products = Product::factory(10) -> create();
         $users = User::factory(10) -> create() -> each(
             function($user) use ($products){
+                if ($user -> id === 1){
+                    $user -> is_admin = true;
+                    $user -> save();
+                }
                 $orderCount = rand(2, 5);
                 Order::factory($orderCount) -> create(
                     ['user_id' => $user -> id]
