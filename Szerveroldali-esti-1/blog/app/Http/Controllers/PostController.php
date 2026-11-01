@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -41,13 +43,22 @@ class PostController extends Controller
         $validated = $request -> validate([
             "content" => "required|min:5",
             "title" => "required|max:64",
-            // "user_id" => "required|integer|exists:users,id"
+            // "user_id" => "required|integer|exists:users,id",
+            "image_file" => "file|image"
         ], [
             "content.required" => "A tartalom kitöltése kötelező!",
             "content.min" => "A tartalom legalább :min karakterből álljon!"
         ]);
         // innentől lefelé BIZTOS, hogy a validáció átment :)
         $validated["user_id"] = Auth::id();
+
+        if ($request -> hasFile("image_file")){
+            $file = $request -> file("image_file");
+            $fileName = Str::uuid() . "." . $file -> getClientOriginalExtension();
+            $validated["image"] = $fileName;
+            Storage::disk("public") -> put("/images/".$fileName, $file -> getContent());
+        }
+
         $post = Post::create($validated);
         Session::flash('post-created', $post);
         return redirect() -> route('posts.index');
@@ -66,7 +77,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('posts.edit', ['post' => $post]);
     }
 
     /**
@@ -74,7 +85,29 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        Gate::authorize('update', $post);
+        $validated = $request -> validate([
+            "content" => "required|min:5",
+            "title" => "required|max:64",
+            // "user_id" => "required|integer|exists:users,id",
+            "image_file" => "file|image"
+        ], [
+            "content.required" => "A tartalom kitöltése kötelező!",
+            "content.min" => "A tartalom legalább :min karakterből álljon!"
+        ]);
+        // innentől lefelé BIZTOS, hogy a validáció átment :)
+        // $validated["user_id"] = Auth::id();
+
+        if ($request -> hasFile("image_file")){
+            $file = $request -> file("image_file");
+            $fileName = Str::uuid() . "." . $file -> getClientOriginalExtension();
+            $validated["image"] = $fileName;
+            Storage::disk("public") -> put("/images/".$fileName, $file -> getContent());
+        }
+
+        $post -> update($validated);
+        Session::flash('post-updated', $post);
+        return redirect() -> route('posts.index');
     }
 
     /**
@@ -82,6 +115,9 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        Gate::authorize('delete', $post);
+        $post -> delete();
+        Session::flash('post-deleted', $post);
+        return redirect() -> route('posts.index');
     }
 }

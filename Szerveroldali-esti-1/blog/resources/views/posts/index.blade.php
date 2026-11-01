@@ -11,6 +11,18 @@
         </div>
     @endif
 
+    @if (Session::has('post-updated'))
+        <div class="bg-green-200 p-2 text-center rounded">
+            A(z) <b>{{ Session::get('post-updated')["title"] }}</b> című bejegyzés módosítva!
+        </div>
+    @endif
+
+    @if (Session::has('post-deleted'))
+        <div class="bg-green-200 p-2 text-center rounded">
+            A(z) <b>{{ Session::get('post-deleted')["title"] }}</b> című bejegyzés törölve!
+        </div>
+    @endif
+
     @can('create', \App\Models\Post::class)
         <a class="text-fuchsia-700" href="{{ route('posts.create') }}">Új bejegyzés írása</a>
     @endcan
