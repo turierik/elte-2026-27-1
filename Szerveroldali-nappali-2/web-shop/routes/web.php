@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 
@@ -12,6 +13,18 @@ Route::post('/products', [ProductController::class, 'store']) -> name('products.
 Route::delete('/products/{product}', [ProductController::class, 'destroy']) -> name('products.destroy');
 Route::get('/products/{product}/edit', [ProductController::class, 'edit']) -> name('products.edit');
 Route::patch('/products/{product}', [ProductController::class, 'update']) -> name('products.update');
+
+Route::get('/orders', [OrderController::class, 'index'])
+  -> name('orders.index') -> middleware('auth');
+
+Route::get('/orders/{order}', [OrderController::class, 'show'])
+  -> name('orders.show') -> middleware('auth');
+
+Route::delete('/orders/{order}/products/{product}', [OrderController::class, 'removeProduct'])
+  -> name('orders.removeProduct') -> middleware('auth');
+
+Route::post('/orders/{order}/products', [OrderController::class, 'addProduct'])
+  -> name('orders.addProduct') -> middleware('auth');
 
 Route::get('/dashboard', function () {
     return redirect() -> route('products.index');

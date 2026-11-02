@@ -30,6 +30,8 @@
                             Kijelentkezés
                         </a>
                     </form>
+                    <br>
+                    <a href="{{ route("orders.index") }}">Rendeléseim</a>
                 @endauth
             </div>
         </div>
