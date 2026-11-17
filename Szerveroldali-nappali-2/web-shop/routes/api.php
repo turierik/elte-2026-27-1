@@ -15,3 +15,5 @@ Route::patch('/products/{product}', [ProductApiController::class, "update"]);
 Route::delete('/products/{product}', [ProductApiController::class, "destroy"]);
 Route::post('/login', [ProductApiController::class, "login"]);
 Route::get('/orders', [ProductApiController::class, "orderIndex"])->middleware('auth:sanctum');
+
+Route::patch('/orders/{order}/products', [ProductApiController::class, 'orderUpdate']);

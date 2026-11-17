@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,7 @@ class ProductApiController extends Controller
      */
     public function index()
     {
-        return Product::orderBy("name") -> get();
+        return Product::orderBy("name") -> with('orders') -> withCount('orders') -> get() -> toResourceCollection();
     }
 
     /**
@@ -48,7 +49,7 @@ class ProductApiController extends Controller
         }
 
         $product = Product::create($validated);
-        return $product;
+        return $product -> toResource();
     }
 
     /**
@@ -69,7 +70,7 @@ class ProductApiController extends Controller
         //     return response() -> json(["message" => "product not found."], 404);
         // return $product;
 
-        return Product::findOrFail($product);
+        return Product::findOrFail($product) -> withCount('orders') -> first() -> toResource();
     }
 
     /**
@@ -107,7 +108,7 @@ class ProductApiController extends Controller
         }
 
         $product -> update($validated);
-        return $product;
+        return $product -> toResource();
     }
 
     /**
@@ -143,5 +144,33 @@ class ProductApiController extends Controller
     public function orderIndex(Request $request){
         $user = $request -> user();
         return $user -> orders;
+    }
+
+    public function orderUpdate(Request $request, string $order){
+        Validator::make(
+            ['order' => $order],
+            ['order' => 'required|integer']
+        ) -> validate();
+        $order = Order::findOrFail($order);
+
+        $validated = $request -> validate([
+            "add" => "array",
+            "remove" => "array",
+            "add.*" => "integer|distinct|exists:products,id|not_in:".implode(",", $request -> input('remove') ?? []),
+            "remove.*" => "integer|distinct|exists:products,id|not_in:".implode(",", $request -> input('add') ?? []),
+        ]);
+        $validated["add"] ??= [];
+        $validated["remove"] ??= [];
+
+        $start = $order -> products -> pluck('id') -> toArray();
+        $order -> products() -> syncWithoutDetaching($validated["add"]);
+        $order -> products() -> detach($validated["remove"]);
+
+        return [
+            "just got added" => array_values(array_diff($validated["add"], $start)),
+            "was already added" => array_values(array_intersect($start, $validated["add"])),
+            "just got removed" => array_values(array_intersect($start, $validated["remove"])),
+            "was already removed" => array_values(array_diff($validated["remove"], $start))
+        ];
     }
 }

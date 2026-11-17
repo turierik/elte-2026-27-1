@@ -38,4 +38,60 @@ class ApiController extends Controller
         ]) -> validate();
         return Post::findOrFail($post);
     }
+
+    public function store(Request $request){
+        $validated = $request -> validate([
+            "content" => "required|min:5",
+            "title" => "required|max:64",
+            // "user_id" => "required|integer|exists:users,id",
+            "image_file" => "file|image"
+        ], [
+            "content.required" => "A tartalom kitöltése kötelező!",
+            "content.min" => "A tartalom legalább :min karakterből álljon!"
+        ]);
+        // innentől lefelé BIZTOS, hogy a validáció átment :)
+        $validated["user_id"] = $request -> user() -> id;
+
+        if ($request -> hasFile("image_file")){
+            $file = $request -> file("image_file");
+            $fileName = Str::uuid() . "." . $file -> getClientOriginalExtension();
+            $validated["image"] = $fileName;
+            Storage::disk("public") -> put("/images/".$fileName, $file -> getContent());
+        }
+
+        $post = Post::create($validated);
+        return $post;
+    }
+
+    public function showLikes(string $post){
+        Validator::make([
+            'post' => $post
+        ], [
+            'post' => 'required|integer'
+        ]) -> validate();
+        $post = Post::findOrFail($post);
+        return $post -> likes;
+    }
+
+    public function likePost(Request $request, string $post){
+        Validator::make([
+            'post' => $post
+        ], [
+            'post' => 'required|integer'
+        ]) -> validate();
+        $post = Post::findOrFail($post);
+        $post -> likes() -> attach($request -> user() -> id);
+        return $request -> user() -> likes;
+    }
+
+    public function unlikePost(Request $request, string $post){
+        Validator::make([
+            'post' => $post
+        ], [
+            'post' => 'required|integer'
+        ]) -> validate();
+        $post = Post::findOrFail($post);
+        $post -> likes() -> detach($request -> user() -> id);
+        return $request -> user() -> likes;
+    }
 }

@@ -1,0 +1,16 @@
+PHP kvíz
+
+November 30.
+16:10-16:30
+
+20 kérdés, 20 pont, min. 8 pont elérendő
+Kérdéstípusok JavaScript kvízhez hasonlók
+
+Témakor:
+1. PHP nyelvi alapok (szintaxis, operátorok, stb.)
+2. Kimenetgenerálás (táblázat, listák, stb.)
+3. Tömbfüggények (array_filter, array_map, stb.)
+4. Bemenet (űrlapok - mezők, metódusok)
+5. Bemenet (validáció)
+6. Adattárolás (SQLite adatbázisban)
+7. Elmélet - HTTP kérés, státuszkódok (pl. 404 - not found)
