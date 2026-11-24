@@ -10,7 +10,9 @@
         "laravel/breeze": "^2.4",
         "laravel/framework": "^13.17",
         "laravel/sanctum": "^4.0",
-        "laravel/tinker": "^3.0"
+        "laravel/tinker": "^3.0",
+        "mll-lab/laravel-graphiql": "^4.2",
+        "nuwave/lighthouse": "^6.74"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^4.4",

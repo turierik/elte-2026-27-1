@@ -1,7 +1,7 @@
 PHP kvíz
 
-November 30.
-16:10-16:30
+December 1.
+12:25-12:45
 
 20 kérdés, 20 pont, min. 8 pont elérendő
 Kérdéstípusok JavaScript kvízhez hasonlók

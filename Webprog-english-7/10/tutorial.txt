@@ -1,0 +1,99 @@
+- ENABLE DATABASES IN PHP
+
+php.ini - configuration file
+type php --ini to your console --> look up the file
+in the file, find:
+extension=pdo_sqlite
+and make sure it is NOT in a comment (no ;)
+
+- CREATE A DATABASE
+
+create an empty file with .sqlite extension
+for example: database.sqlite
+
+- HAVE A VS CODE EXTENSION FOR SQLITE DATABASES
+
+(optional) to create tables, look into your database
+
+Recommended: SQLite3 Editor
+
+- CREATE A TABLE
+
+CREATE TABLE people (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    age INTEGER NOT NULL
+);
+
+id fields are pretty much always: INTEGER PRIMARY KEY AUTOINCREMENT
+
+- WHAT YOU NEED TO KNOW
+
+get some data from the database - SELECT
+add some data to the database - INSERT INTO
+modify some data in the database - UPDATE
+remove some data from the database - DELETE
+
+No aggregations, no JOINs, etc. JUST YET :)
+
+- ADD SOME DATA TO THE DATABASE
+
+INSERT INTO table (field1, field2) VALUES (:value1, :value2)
+pass the values as parameters using prepared statements! (no string concat! - SQL injection)
+field and table name CAN be put into ` characters, but it's not needed (e.g. `id`)
+
+example:
+$pdo = new PDO("sqlite:database.sqlite");
+$stmt = $pdo -> prepare("INSERT INTO people (name, age) VALUES (:name, :age)");
+$stmt -> execute(["name" => $name, "age" => $age]);
+
+- GET SOME DATA FROM THE DATABASE
+
+SELECT field1, field2 FROM table
+
+if you want ALL fields:
+SELECT * FROM table
+
+Filtering can be done using WHERE clauses:
+e.g:
+SELECT * FROM table WHERE fieldA = :valueA
+
+NOTE: equals is =, not == or ===
+
+Other operators:
+>, <, >=, <=, <> (not equal), IS NULL, IS NOT NULL, IN (1, 2, 3), NOT IN (1, 2, 3)
+
+An important operator: LIKE
+usage:
+SELECT * FROM table WHERE string LIKE pattern
+pattern can have wildcard characters e.g. % - means any number of characters
+s LIKE "%ack" - s can begin with anything, must end with "ack"
+s LIKE "J%" - s must begin with "J", can end with anything
+s Like "%a%" - s must include an "a" somewhere
+
+Logical operators:
+AND, OR, XOR, .....
+usage:
+SELECT * FROM table
+   WHERE fieldA = :valueA
+   AND   fieldB = :valueB
+
+example:
+$pdo = new PDO("sqlite:database.sqlite");
+$stmt = $pdo -> prepare("SELECT * FROM people WHERE name LIKE :name");
+$stmt -> execute(["name" => "%$name%"]);
+$result = $stmt -> fetchAll();
+
+- REMOVE SOME DATA FROM THE DATABASE
+
+DELETE FROM table WHERE field1 = :value1
+
+WARNING!!! If you don't specify a WHERE condition, you will delete EVERYTHING!!!
+
+- MODIFY SOME DATA IN THE DATABASE
+
+UPDATE table SET field1 = :value1, field2 = :value2 WHERE field3 = :value3
+
+WARNING!!! If you don't specify a WHERE condition, you will change EVERY ROW!!!
+
+
